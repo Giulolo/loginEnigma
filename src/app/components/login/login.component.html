@@ -1,0 +1,11 @@
+<p>
+  login works!
+</p>
+<ul>
+  <li *ngFor="let item of items">
+    {{ item.name }}
+    <button (click)="updateItem(item)">Update</button>
+    <button (click)="deleteItem(item.id)">Delete</button>
+  </li>
+</ul>
+<button (click)="addItem()">Add Item</button>

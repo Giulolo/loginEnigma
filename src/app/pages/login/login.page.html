@@ -1,0 +1,121 @@
+<ion-content [fullscreen]="true" class="ion-padding">
+
+  <ion-grid>
+
+    <ion-title class="ion-text-center ion-padding-top">Enigma</ion-title>
+
+    <ion-row class="ion-align-items-center ion-padding-vertical">
+      <ion-col class="ion-text-center">
+        <ion-label class="subtitle selected" (click)="show_login()" id="labelLogin">SIGN IN</ion-label>
+      </ion-col>
+      <ion-col class="ion-text-center">
+        <ion-label class="subtitle" (click)="show_register()" id="labelRegister">REGISTER</ion-label>
+      </ion-col>
+    </ion-row>
+
+    <!-- login section -->
+    <form [formGroup]="loginForm" (ngSubmit)="tryLogin()" id="form_login">
+      <ion-row class="ion-align-items-stretch ion-padding-horizontal">
+        <ion-input label="Email:" label-placement="floating" errorText="Invalid email" type="email" color="dark"
+          [clearInput]="true" formControlName="email">
+        </ion-input>
+        <ion-input label="Password:" label-placement="floating" errorText="Password incorrect" type="password"
+          color="dark" [clearInput]="true" formControlName="password">
+        </ion-input>
+      </ion-row>
+
+      <ion-button class="ion-align-items-stretch ion-text-center ion-margin" expand="full" size="normal"
+        type="submit">Sign
+        In</ion-button>
+      <!-- [disabled]="!loginForm.valid" -->
+      <!-- <ion-item lines="none" class="btn_forgotPass">
+        <ion-label slot="end">Forgot your password?</ion-label>
+      </ion-item> -->
+
+      <ion-row class="ion-align-items-end ion-align-self-stretch ion-padding-vertically">
+        <ion-col class="ion-text-center ion-padding-top">
+          <ion-label>Or</ion-label>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="ion-align-items-center ion-padding-vertical">
+        <ion-col class="ion-text-center">
+          <ion-icon src="../assets/icon/icons-google.svg" aria-hidden="true" (click)="tryGoogleLogin()" />
+        </ion-col>
+        <!-- <ion-col class="ion-text-center">
+          <ion-icon src="../assets/icon/icons-facebook.svg" aria-hidden="true" (click)="tryFacebookLogin()" />
+        </ion-col> -->
+      </ion-row>
+    </form>
+
+
+    <!-- register section -->
+    <form id="form_register" hidden='true' [formGroup]="registerForm" (ngSubmit)="tryRegister()">
+      <ion-row class="ion-padding-horizontal ">
+        <ion-select class="always-flip" toggleIcon="caret-down-sharp" interface="action-sheet" label="Location:"
+          placeholder="Select country" justify="start" color="dark" formControlName="location" name="myLocation">
+          <ion-select-option value="Panama" color="dark">Panamá</ion-select-option>
+          <ion-select-option value="USSR" color="dark">USSR</ion-select-option>
+          <ion-select-option value="Costa Rica" color="dark">Costa Rica</ion-select-option>
+        </ion-select>
+      </ion-row>
+
+      <ion-row class="ion-align-items-stretch ion-padding-horizontal">
+        <ion-col style="--padding:0 8px 0 0; padding:0 8px 0 0;">
+          <ion-item class="ion-no-padding">
+            <ion-label position="floating">First name:</ion-label>
+            <ion-input name="first_name" type="text" required minlength="1" [clearInput]="true"
+              formControlName="firstName"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col style="--padding:0 0 0 8px; padding:0 0 0 8px;">
+          <ion-item class="ion-no-padding">
+            <ion-label position="floating">Last name:</ion-label>
+            <ion-input name="last_name" type="text" required minlength="1" [clearInput]="true"
+              formControlName="lastName"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="ion-align-items-stretch ion-padding-horizontal">
+        <ion-item class="ion-no-padding" style="--width:100%; width:100%" lines="none">
+          <ion-label position="floating">Email:</ion-label>
+          <ion-input name="register_email" required minlength="1" type="email" errorText="Invalid email"
+            [clearInput]="true" formControlName="registerEmail"></ion-input>
+        </ion-item>
+        <ion-item class="ion-no-padding" style="--width:100%; width:100%" lines="none">
+          <ion-label position="floating">Password:</ion-label>
+          <ion-input name="register_password" required minlength="1" type="password"
+            errorText="Must contain at least 8 characters, at least one number and both lower and uppercase letters and special characters"
+            [clearInput]="true" formControlName="registerPassword">
+          </ion-input>
+        </ion-item>
+        <ion-item class="ion-no-padding" style="--width:100%; width:100%" lines="none">
+          <ion-label position="floating">Confirm password:</ion-label>
+          <ion-input name="confirm_password" required minlength="1" type="password" errorText="Incorrect password"
+            [clearInput]="true"></ion-input>
+        </ion-item>
+        <ion-item lines="none" class="ion-no-padding ion-margin-vertical">
+          <ion-label class="ion-padding-end">Zipcode:</ion-label>
+          <ion-input name="zipcode" fill="solid"
+            style="--background: #373737; background: #373737; --color: #fff; color: #fff;" required minlength="4"
+            maxlength="5" type="text" errorText="Incorrect code" [clearInput]="true" color="light"
+            formControlName="zipcode"></ion-input>
+        </ion-item>
+      </ion-row>
+
+      <ion-checkbox class="ion-align-items-stretch ion-padding" labelPlacement="end" color="dark" name="checkTerms">I
+        agree to the <a href="#" (click)="$event.stopPropagation()">terms and
+          conditions</a></ion-checkbox>
+
+      <ion-button class="ion-align-items-stretch ion-text-center ion-margin" expand="full" size="normal"
+        type="submit">Register</ion-button>
+
+    </form>
+
+  </ion-grid>
+
+  <!-- <ion-button (click)="getData()" >View</ion-button> -->
+  <!-- <p>Firestore Status: {{content}}</p> -->
+
+</ion-content>
